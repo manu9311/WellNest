@@ -1,6 +1,5 @@
-// src/firebase.js
 import { initializeApp } from 'firebase/app'
-import { getAuth, GoogleAuthProvider, signInWithRedirect, getRedirectResult } from 'firebase/auth'
+import { getAuth, GoogleAuthProvider, browserLocalPersistence, setPersistence } from 'firebase/auth'
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
@@ -16,3 +15,6 @@ const app      = initializeApp(firebaseConfig)
 export const auth     = getAuth(app)
 export const db       = getFirestore(app)
 export const provider = new GoogleAuthProvider()
+
+// Set persistence to local so session survives page refreshes
+setPersistence(auth, browserLocalPersistence)
