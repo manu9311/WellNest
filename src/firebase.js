@@ -4,7 +4,7 @@ import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey:            "AIzaSyDkfVBctDwjMJ7km7u2rnQ9ASRXvsEHnyQ",
-  authDomain:        "wnest.netlify.app",
+  authDomain:        "wellnest-b5658.firebaseapp.com",
   projectId:         "wellnest-b5658",
   storageBucket:     "wellnest-b5658.firebasestorage.app",
   messagingSenderId: "540606719970",
