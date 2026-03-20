@@ -1,16 +1,27 @@
 // src/context/AuthContext.jsx
 import { createContext, useContext, useEffect, useState } from 'react'
-import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
+import { onAuthStateChanged, signInWithRedirect, getRedirectResult, signOut } from 'firebase/auth'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { auth, db, provider } from '../firebase'
 
 const AuthContext = createContext(null)
 
 export function AuthProvider({ children }) {
-  const [user, setUser]       = useState(undefined) // undefined = still loading
+  const [user, setUser]       = useState(undefined)
   const [profile, setProfile] = useState(null)
 
   useEffect(() => {
+    // Handle redirect result on page load
+    getRedirectResult(auth).then(async (result) => {
+      if (result?.user) {
+        setUser(result.user)
+        const ref  = doc(db, 'users', result.user.uid)
+        const snap = await getDoc(ref)
+        setProfile(snap.exists() ? snap.data() : null)
+      }
+    }).catch(console.error)
+
+    // Listen for auth state changes
     const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
         setUser(firebaseUser)
@@ -25,9 +36,9 @@ export function AuthProvider({ children }) {
     return unsub
   }, [])
 
-  const loading = user === undefined // true only while Firebase is restoring session
+  const loading = user === undefined
 
-  const loginWithGoogle = () => signInWithPopup(auth, provider)
+  const loginWithGoogle = () => signInWithRedirect(auth, provider)
 
   const logout = () => {
     signOut(auth)
