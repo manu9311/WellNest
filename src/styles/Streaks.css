@@ -1,0 +1,390 @@
+/* src/styles/Streaks.css */
+
+.streaks-page {
+  padding: 2rem 2rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* ── HEADER ── */
+.streaks-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.streaks-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0F1117;
+  letter-spacing: -0.4px;
+}
+
+.streaks-date {
+  font-size: 0.875rem;
+  color: #6B7280;
+  margin-top: 0.15rem;
+}
+
+.streaks-overall {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  background: #0F1117;
+  padding: 0.75rem 1.25rem;
+  border-radius: 14px;
+}
+
+.streaks-overall-num {
+  font-size: 2rem;
+  font-weight: 800;
+  color: #4ADE80;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.streaks-overall-label {
+  font-size: 0.7rem;
+  color: #6B7280;
+  margin-top: 0.1rem;
+}
+
+/* ── CHECK-IN CARD ── */
+.checkin-card {
+  background: #ffffff;
+  border: 1px solid #EAECF0;
+  border-radius: 20px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.checkin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.checkin-header h2 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0F1117;
+}
+
+.checkin-header p {
+  font-size: 0.8rem;
+  color: #6B7280;
+  margin-top: 0.2rem;
+}
+
+.checkin-progress-ring {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.checkin-ring-num {
+  position: absolute;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #0F1117;
+}
+
+.checkin-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.6rem;
+}
+
+.checkin-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 12px;
+  border: 1.5px solid #E5E7EB;
+  background: #F9FAFB;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: left;
+  font-family: inherit;
+}
+
+.checkin-item:hover {
+  border-color: #D1D5DB;
+  transform: translateY(-1px);
+}
+
+.checkin-item--done {
+  border-color: var(--habit-color, #16A34A);
+  background: #F0FDF4;
+}
+
+.checkin-item-icon { font-size: 1.2rem; flex-shrink: 0; }
+
+.checkin-item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.checkin-item-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #0F1117;
+}
+
+.checkin-item-desc {
+  font-size: 0.68rem;
+  color: #9CA3AF;
+}
+
+.checkin-item-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-shrink: 0;
+}
+
+.checkin-streak-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #92400E;
+  background: #FEF3C7;
+  padding: 0.15rem 0.4rem;
+  border-radius: 999px;
+}
+
+.checkin-check {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #D1D5DB;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  color: white;
+  transition: all 0.15s;
+  flex-shrink: 0;
+}
+
+.checkin-check--done {
+  background: #16A34A;
+  border-color: #16A34A;
+}
+
+/* ── SECTION TITLE ── */
+.section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0F1117;
+  margin-bottom: 0.75rem;
+}
+
+/* ── STREAK CARDS ── */
+.streak-cards-section { display: flex; flex-direction: column; }
+
+.streak-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 0.75rem;
+}
+
+.streak-card {
+  background: #ffffff;
+  border: 1.5px solid #EAECF0;
+  border-radius: 16px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.streak-card:hover {
+  border-color: var(--habit-color, #16A34A);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+}
+
+.streak-card--active {
+  border-color: var(--habit-color, #16A34A);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--habit-color) 12%, transparent);
+}
+
+.streak-card-top {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.streak-card-icon { font-size: 1.25rem; }
+
+.streak-card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.streak-card-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0F1117;
+}
+
+.streak-done-today {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #16A34A;
+}
+
+.streak-card-nums {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.streak-num-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.streak-num {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #0F1117;
+  letter-spacing: -0.5px;
+  line-height: 1;
+}
+
+.streak-num-label {
+  font-size: 0.6rem;
+  color: #9CA3AF;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-top: 0.2rem;
+}
+
+.streak-divider {
+  width: 1px;
+  height: 28px;
+  background: #F3F4F6;
+}
+
+.streak-mini-bar {
+  height: 3px;
+  background: #F3F4F6;
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.streak-mini-fill {
+  height: 100%;
+  border-radius: 999px;
+  transition: width 0.5s ease;
+}
+
+/* ── HEATMAP ── */
+.heatmap-section {
+  background: #ffffff;
+  border: 1px solid #EAECF0;
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+
+.heatmap-subtitle {
+  font-size: 0.78rem;
+  color: #9CA3AF;
+  margin-top: -0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.heatmap-grid {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+}
+
+.heatmap-day-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding-top: 2px;
+}
+
+.heatmap-day-label {
+  height: 13px;
+  font-size: 0.6rem;
+  color: #9CA3AF;
+  display: flex;
+  align-items: center;
+  width: 22px;
+}
+
+.heatmap-weeks {
+  display: flex;
+  gap: 3px;
+}
+
+.heatmap-week {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.heatmap-cell {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+  background: #F3F4F6;
+  transition: background 0.2s;
+}
+
+.heatmap-cell--today {
+  outline: 2px solid #16A34A;
+  outline-offset: 1px;
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 1rem;
+  justify-content: flex-end;
+}
+
+.heatmap-legend span {
+  font-size: 0.65rem;
+  color: #9CA3AF;
+}
+
+.heatmap-legend-cell {
+  width: 13px;
+  height: 13px;
+  border-radius: 3px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .streaks-page { padding: 1rem 1rem 3rem; }
+  .checkin-grid { grid-template-columns: 1fr; }
+  .streak-cards-grid { grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 500px) {
+  .streak-cards-grid { grid-template-columns: 1fr; }
+}

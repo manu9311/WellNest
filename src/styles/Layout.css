@@ -1,0 +1,429 @@
+/* ============================================================
+   FILE: src/styles/Layout.css
+   PURPOSE: Sidebar layout, topbar, and responsive behaviour.
+
+   DESIGN SYSTEM — CSS VARIABLES:
+   All colors, spacing, and typography are defined here as
+   CSS custom properties (variables). Every other CSS file
+   can use these via var(--variable-name).
+   Changing a variable here updates the entire app.
+   ============================================================ */
+
+/* ── DESIGN TOKENS ─────────────────────────────────────────
+   These are the single source of truth for the visual system.
+*/
+:root {
+  /* Colors */
+  --color-bg:          #F7F8FA;
+  --color-surface:     #FFFFFF;
+  --color-border:      #EAECF0;
+  --color-text-primary:   #0F1117;
+  --color-text-secondary: #6B7280;
+  --color-text-muted:     #9CA3AF;
+
+  /* Brand accent — the signature green */
+  --color-accent:      #16A34A;
+  --color-accent-soft: #DCFCE7;
+  --color-accent-mid:  #4ADE80;
+
+  /* Sidebar */
+  --sidebar-width:          240px;
+  --sidebar-collapsed-width: 64px;
+  --sidebar-bg:         #0F1117;
+  --sidebar-text:       #A1A9B8;
+  --sidebar-text-hover: #FFFFFF;
+  --sidebar-active-bg:  rgba(22, 163, 74, 0.15);
+  --sidebar-active-text: #4ADE80;
+
+  /* Topbar */
+  --topbar-height: 60px;
+
+  /* Typography */
+  --font-display: 'DM Sans', 'Segoe UI', system-ui, sans-serif;
+  --font-body:    'DM Sans', 'Segoe UI', system-ui, sans-serif;
+
+  /* Radius */
+  --radius-sm:  8px;
+  --radius-md:  12px;
+  --radius-lg:  16px;
+  --radius-xl:  24px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+
+  /* Transitions */
+  --transition: 0.18s ease;
+}
+
+/* ── GOOGLE FONT IMPORT ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap');
+
+/* ── BASE RESET ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+button { font-family: inherit; cursor: pointer; }
+a { text-decoration: none; color: inherit; }
+
+
+/* ── LAYOUT SHELL ──────────────────────────────────────────
+   CSS Grid with two columns: sidebar + main.
+   The sidebar column uses a CSS variable so collapsing
+   is just changing that variable.
+*/
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: 100vh;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  transition: grid-template-columns var(--transition);
+}
+
+.layout--collapsed {
+  grid-template-columns: var(--sidebar-collapsed-width) 1fr;
+}
+
+
+/* ── SIDEBAR ───────────────────────────────────────────────*/
+.sidebar {
+  background: var(--sidebar-bg);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  z-index: 50;
+  border-right: 1px solid rgba(255,255,255,0.04);
+}
+
+/* Brand area */
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  min-height: 64px;
+}
+
+.brand-logo {
+  width: 36px;
+  height: 36px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-mid));
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.brand-logo-icon {
+  color: white;
+  font-size: 1.1rem;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.brand-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+}
+
+.brand-tagline {
+  font-size: 0.7rem;
+  color: var(--sidebar-text);
+  white-space: nowrap;
+}
+
+/* Nav */
+.sidebar-nav {
+  flex: 1;
+  padding: 0.75rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+
+.sidebar-nav::-webkit-scrollbar { display: none; }
+
+.nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.65rem 0.75rem;
+  border-radius: var(--radius-sm);
+  background: none;
+  border: none;
+  color: var(--sidebar-text);
+  font-size: 0.875rem;
+  font-weight: 500;
+  width: 100%;
+  text-align: left;
+  transition: all var(--transition);
+  position: relative;
+  white-space: nowrap;
+}
+
+.nav-item:hover {
+  background: rgba(255,255,255,0.06);
+  color: var(--sidebar-text-hover);
+}
+
+.nav-item--active {
+  background: var(--sidebar-active-bg);
+  color: var(--sidebar-active-text);
+}
+
+.nav-icon {
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nav-label {
+  flex: 1;
+}
+
+.nav-active-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--color-accent-mid);
+  border-radius: 50%;
+}
+
+/* Collapse button */
+.sidebar-collapse-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  color: var(--sidebar-text);
+  font-size: 0.8rem;
+  width: 100%;
+  text-align: left;
+  transition: color var(--transition);
+}
+
+.sidebar-collapse-btn:hover {
+  color: var(--sidebar-text-hover);
+}
+
+
+/* ── MAIN AREA ─────────────────────────────────────────────*/
+.layout-main {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  overflow: hidden;
+  min-width: 0; /* prevents grid blowout */
+}
+
+/* Topbar */
+.topbar {
+  height: var(--topbar-height);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.topbar-search {
+  flex: 1;
+  max-width: 480px;
+}
+
+.topbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-left: auto;
+}
+
+.topbar-date {
+  font-size: 0.8rem;
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.topbar-avatar {
+  width: 32px;
+  height: 32px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-mid));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: var(--color-text-secondary);
+  padding: 0.25rem;
+}
+
+/* Page content scrollable area */
+.layout-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-border) transparent;
+}
+
+.layout-content::-webkit-scrollbar { width: 4px; }
+.layout-content::-webkit-scrollbar-track { background: transparent; }
+.layout-content::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 999px; }
+
+
+/* ── MOBILE OVERLAY ────────────────────────────────────────*/
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: 40;
+}
+
+
+/* ── RESPONSIVE ────────────────────────────────────────────*/
+
+/* Tablet: collapse sidebar by default */
+@media (max-width: 1024px) {
+  .layout {
+    grid-template-columns: var(--sidebar-collapsed-width) 1fr;
+  }
+  .brand-text,
+  .nav-label,
+  .nav-active-dot,
+  .sidebar-collapse-btn span:last-child {
+    display: none;
+  }
+}
+
+/* Mobile: sidebar becomes a drawer */
+@media (max-width: 640px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: fixed;
+    left: -100%;
+    top: 0;
+    width: var(--sidebar-width);
+    transition: left var(--transition);
+    z-index: 60;
+  }
+
+  .sidebar--mobile-open {
+    left: 0;
+  }
+
+  /* Show ALL sidebar text on mobile when open */
+  .sidebar--mobile-open .brand-text,
+  .sidebar--mobile-open .nav-label,
+  .sidebar--mobile-open .nav-active-dot {
+    display: flex;
+  }
+
+  .mobile-overlay {
+    display: block;
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .topbar-date {
+    display: none;
+  }
+}
+
+/* ── USER AVATAR MENU ── */
+.topbar-avatar-wrap { position: relative; }
+
+.topbar-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #16A34A;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: white;
+  font-size: 0.875rem;
+  overflow: hidden;
+  padding: 0;
+  flex-shrink: 0;
+}
+.topbar-avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+.topbar-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  background: white;
+  border: 1px solid #EAECF0;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  min-width: 200px;
+  padding: 0.75rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.topbar-menu hr { border: none; border-top: 1px solid #F3F4F6; margin: 0.3rem 0; }
+.topbar-menu-name  { font-size: 0.875rem; font-weight: 700; color: #0F1117; }
+.topbar-menu-email { font-size: 0.75rem; color: #9CA3AF; }
+.topbar-menu-logout {
+  background: none;
+  border: none;
+  font-size: 0.82rem;
+  color: #EF4444;
+  font-family: inherit;
+  font-weight: 600;
+  padding: 0.4rem 0;
+  text-align: left;
+  cursor: pointer;
+}
+.topbar-menu-logout:hover { color: #DC2626; }

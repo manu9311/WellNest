@@ -1,0 +1,376 @@
+/* src/styles/Yoga.css */
+
+.yoga-page {
+  padding: 2rem 2rem 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* ── HEADER ── */
+.yoga-header { display: flex; align-items: flex-end; justify-content: space-between; }
+.yoga-title  { font-size: 1.5rem; font-weight: 800; color: #0F1117; letter-spacing: -0.4px; }
+.yoga-subtitle { font-size: 0.875rem; color: #6B7280; margin-top: 0.15rem; }
+
+/* ── BACK BTN ── */
+.yoga-back-btn {
+  align-self: flex-start;
+  background: none;
+  border: 1.5px solid #E5E7EB;
+  border-radius: 10px;
+  padding: 0.45rem 1rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #374151;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.yoga-back-btn:hover { border-color: #16A34A; color: #16A34A; }
+
+/* ── TABS ── */
+.yoga-tabs {
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 2px solid #F3F4F6;
+  padding-bottom: 0;
+}
+.yoga-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.6rem 1.1rem;
+  border: none;
+  background: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #9CA3AF;
+  font-family: inherit;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+  transition: all 0.15s;
+}
+.yoga-tab--active { color: #0F1117; border-bottom-color: #16A34A; }
+.yoga-tab-count {
+  font-size: 0.65rem;
+  background: #F3F4F6;
+  color: #6B7280;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.yoga-tab--active .yoga-tab-count { background: #DCFCE7; color: #16A34A; }
+
+/* ── PLANS GRID ── */
+.plans-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.plan-card {
+  background: #ffffff;
+  border: 1.5px solid #EAECF0;
+  border-radius: 16px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.plan-card:hover {
+  border-color: var(--plan-color, #16A34A);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+.plan-card-top { display: flex; align-items: flex-start; gap: 0.75rem; }
+.plan-card-icon { font-size: 1.75rem; flex-shrink: 0; }
+.plan-card-info { display: flex; flex-direction: column; gap: 0.2rem; }
+.plan-card-condition { font-size: 0.7rem; font-weight: 700; color: var(--plan-color, #16A34A); text-transform: uppercase; letter-spacing: 0.5px; }
+.plan-card-title { font-size: 0.875rem; font-weight: 600; color: #0F1117; line-height: 1.4; }
+.plan-card-bottom {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.72rem;
+  color: #9CA3AF;
+  border-top: 1px solid #F3F4F6;
+  padding-top: 0.75rem;
+}
+.plan-card-arrow { margin-left: auto; color: var(--plan-color, #16A34A); font-weight: 700; }
+
+/* ── LIBRARY ── */
+.library-section { display: flex; flex-direction: column; gap: 1rem; }
+
+.library-filters { display: flex; gap: 0.4rem; flex-wrap: wrap; }
+.diff-filter {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1.5px solid #E5E7EB;
+  background: #F9FAFB;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #6B7280;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: capitalize;
+}
+.diff-filter--active { background: #0F1117; color: white; border-color: #0F1117; }
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+}
+.library-card {
+  background: #ffffff;
+  border: 1.5px solid #EAECF0;
+  border-radius: 14px;
+  padding: 1.1rem;
+  text-align: left;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.library-card:hover { border-color: #16A34A; transform: translateY(-1px); box-shadow: 0 3px 12px rgba(0,0,0,0.06); }
+.library-card-top { display: flex; align-items: flex-start; gap: 0.5rem; }
+.library-card-info { display: flex; flex-direction: column; gap: 0.1rem; }
+.library-card-sanskrit { font-size: 0.65rem; color: #9CA3AF; font-style: italic; }
+.library-card-name { font-size: 0.9rem; font-weight: 700; color: #0F1117; }
+.library-card-benefits { font-size: 0.75rem; color: #6B7280; line-height: 1.5; }
+.library-card-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+/* ── SHARED TAGS ── */
+.pose-tag {
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+.pose-tag--duration { background: #F3F4F6; color: #6B7280; }
+
+/* ── POSE DETAIL ── */
+.pose-detail { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.pose-detail-header { background: #0F1117; border-radius: 20px; padding: 1.75rem; }
+.pose-detail-sanskrit { font-size: 0.78rem; color: #4ADE80; font-style: italic; display: block; margin-bottom: 0.3rem; }
+.pose-detail-name { font-size: 1.5rem; font-weight: 800; color: #ffffff; letter-spacing: -0.4px; }
+.pose-detail-tags { display: flex; gap: 0.5rem; margin-top: 0.75rem; flex-wrap: wrap; }
+
+.pose-detail-body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.pose-detail-main { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.pose-section {
+  background: #ffffff;
+  border: 1px solid #EAECF0;
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+.pose-section h3 { font-size: 0.9rem; font-weight: 700; color: #0F1117; margin-bottom: 0.75rem; }
+.pose-section p  { font-size: 0.875rem; color: #374151; line-height: 1.6; }
+
+.pose-steps { display: flex; flex-direction: column; gap: 0.4rem; }
+.pose-step {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: 10px;
+  border: 1px solid #F3F4F6;
+  cursor: pointer;
+  transition: all 0.15s;
+  align-items: flex-start;
+}
+.pose-step:hover { background: #F9FAFB; }
+.pose-step--active { background: #F0FDF4; border-color: #BBF7D0; }
+.pose-step-num {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  border-radius: 50%;
+  background: #F3F4F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #6B7280;
+}
+.pose-step--active .pose-step-num { background: #16A34A; color: white; }
+.pose-step-text { font-size: 0.82rem; color: #374151; line-height: 1.55; }
+
+.pose-detail-side { display: flex; flex-direction: column; gap: 0.75rem; position: sticky; top: 1rem; }
+
+.pose-info-card {
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+}
+.pose-info-card--breath { background: #EFF6FF; border: 1px solid #BFDBFE; }
+.pose-info-card--mod    { background: #F0FDF4; border: 1px solid #BBF7D0; }
+.pose-info-card--avoid  { background: #FEF3C7; border: 1px solid #FDE68A; }
+.pose-info-icon { font-size: 1.25rem; flex-shrink: 0; }
+.pose-info-card h4 { font-size: 0.78rem; font-weight: 700; color: #0F1117; margin-bottom: 0.3rem; }
+.pose-info-card p  { font-size: 0.775rem; color: #374151; line-height: 1.5; }
+
+/* ── PLAN DETAIL ── */
+.plan-detail { display: flex; flex-direction: column; gap: 1.25rem; }
+
+.plan-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #0F1117;
+  border-radius: 20px;
+  padding: 1.75rem;
+}
+.plan-detail-icon { font-size: 2.5rem; flex-shrink: 0; }
+.plan-detail-condition { font-size: 0.7rem; font-weight: 700; color: var(--plan-color, #4ADE80); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 0.3rem; }
+.plan-detail-title { font-size: 1.3rem; font-weight: 800; color: #ffffff; letter-spacing: -0.3px; }
+.plan-detail-meta { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 0.6rem; font-size: 0.75rem; color: #9CA3AF; }
+
+.plan-intro {
+  font-size: 0.875rem;
+  color: #374151;
+  line-height: 1.6;
+  background: #F9FAFB;
+  border-left: 3px solid #16A34A;
+  padding: 0.9rem 1.1rem;
+  border-radius: 0 10px 10px 0;
+}
+
+.plan-section-title { font-size: 1rem; font-weight: 700; color: #0F1117; }
+
+.plan-poses-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.plan-pose-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: #ffffff;
+  border: 1px solid #EAECF0;
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  transition: border-color 0.15s;
+}
+.plan-pose-row:hover { border-color: #16A34A; }
+.plan-pose-num {
+  width: 32px;
+  height: 32px;
+  min-width: 32px;
+  border-radius: 50%;
+  background: #F3F4F6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #374151;
+  margin-top: 2px;
+}
+.plan-pose-info { flex: 1; display: flex; flex-direction: column; gap: 0.4rem; }
+.plan-pose-top  { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+.plan-pose-name { font-size: 0.95rem; font-weight: 700; color: #0F1117; }
+.plan-pose-sanskrit { font-size: 0.7rem; color: #9CA3AF; font-style: italic; }
+.plan-pose-benefits { font-size: 0.775rem; color: #6B7280; line-height: 1.5; }
+.plan-pose-tags { display: flex; gap: 0.35rem; flex-wrap: wrap; }
+.plan-pose-btn {
+  padding: 0.45rem 0.9rem;
+  background: #F0FDF4;
+  border: 1.5px solid #BBF7D0;
+  border-radius: 8px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #16A34A;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.15s;
+  white-space: nowrap;
+  flex-shrink: 0;
+  align-self: center;
+}
+.plan-pose-btn:hover { background: #16A34A; color: white; }
+
+/* ── BREATHWORK ── */
+.breathwork-list { display: flex; flex-direction: column; gap: 0.75rem; }
+.breathwork-card {
+  background: #EFF6FF;
+  border: 1px solid #BFDBFE;
+  border-radius: 14px;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+.breathwork-header { display: flex; align-items: center; gap: 0.75rem; }
+.breathwork-icon   { font-size: 1.5rem; }
+.breathwork-header h3 { font-size: 0.95rem; font-weight: 700; color: #1E40AF; }
+.breathwork-duration  { font-size: 0.72rem; color: #3B82F6; font-weight: 500; display: block; margin-top: 0.1rem; }
+.breathwork-how      { font-size: 0.82rem; color: #1E40AF; line-height: 1.5; }
+.breathwork-benefits { font-size: 0.8rem; color: #374151; line-height: 1.5; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .pose-detail-body  { grid-template-columns: 1fr; }
+  .pose-detail-side  { position: static; }
+}
+@media (max-width: 640px) {
+  .yoga-page   { padding: 1rem 1rem 3rem; }
+  .plans-grid  { grid-template-columns: 1fr; }
+  .library-grid { grid-template-columns: 1fr; }
+}
+
+/* ── BREATHWORK STEPS & AVOID ── */
+.breathwork-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0.25rem 0;
+}
+.breathwork-step {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+  font-size: 0.8rem;
+  color: #1E40AF;
+  line-height: 1.5;
+}
+.breathwork-step-num {
+  min-width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #BFDBFE;
+  color: #1E40AF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.breathwork-avoid {
+  font-size: 0.75rem;
+  color: #92400E;
+  background: #FEF3C7;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  line-height: 1.5;
+}

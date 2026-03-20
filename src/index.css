@@ -1,0 +1,21 @@
+/* ============================================================
+   FILE: src/index.css
+   PURPOSE: Global base reset only. No layout constraints here.
+   All layout decisions happen in each page's own CSS file.
+
+   WHY WE CLEAR THIS FILE:
+   Vite's default index.css sets max-width and padding on #root
+   which constrains the entire app to a narrow column.
+   We remove that so each page controls its own layout.
+   ============================================================ */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}

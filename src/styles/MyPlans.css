@@ -1,0 +1,66 @@
+/* src/styles/MyPlans.css */
+.my-plans-page { padding: 2rem 2rem 4rem; max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 2rem; }
+
+.mp-header { display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; }
+.mp-title  { font-size: 1.5rem; font-weight: 800; color: #0F1117; letter-spacing: -0.4px; }
+.mp-date   { font-size: 0.875rem; color: #6B7280; margin-top: 0.15rem; }
+
+.mp-section-title { font-size: 1rem; font-weight: 700; color: #0F1117; margin-bottom: 0.75rem; }
+.mp-empty { display: flex; flex-direction: column; align-items: center; gap: 0.5rem; padding: 4rem; }
+.mp-empty-icon { font-size: 3rem; }
+
+/* ── ACTIVE PLANS ── */
+.mp-active-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.mp-active-card { background: #0F1117; border-radius: 16px; padding: 1.25rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.mp-ac-top  { display: flex; justify-content: space-between; align-items: flex-start; }
+.mp-ac-name { display: block; font-size: 1rem; font-weight: 700; color: #ffffff; }
+.mp-ac-day  { display: block; font-size: 0.72rem; color: #6B7280; margin-top: 0.15rem; }
+.mp-ac-pct  { font-size: 1.25rem; font-weight: 800; color: #4ADE80; }
+.mp-ac-bar  { height: 4px; background: #1F2937; border-radius: 999px; overflow: hidden; }
+.mp-ac-fill { height: 100%; background: #16A34A; border-radius: 999px; transition: width 0.5s; }
+.mp-ac-started { font-size: 0.7rem; color: #4B5563; }
+.mp-ac-actions { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-top: 0.25rem; }
+.mp-view-btn { padding: 0.45rem 0.9rem; background: #16A34A; color: white; border: none; border-radius: 8px; font-size: 0.75rem; font-weight: 700; font-family: inherit; cursor: pointer; transition: all 0.15s; }
+.mp-view-btn:hover { background: #15803D; }
+.mp-stop-btn { background: none; border: 1px solid #374151; color: #6B7280; border-radius: 8px; padding: 0.4rem 0.75rem; font-size: 0.72rem; font-family: inherit; cursor: pointer; transition: all 0.15s; }
+.mp-stop-btn:hover { border-color: #EF4444; color: #EF4444; }
+
+/* ── PAUSED PLANS ── */
+.mp-paused-list { display: flex; flex-direction: column; gap: 0.6rem; }
+.mp-paused-card { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.25rem; background: #F9FAFB; border: 1.5px dashed #D1D5DB; border-radius: 12px; gap: 1rem; flex-wrap: wrap; }
+.mp-paused-info { display: flex; flex-direction: column; gap: 0.15rem; }
+.mp-paused-name { font-size: 0.9rem; font-weight: 700; color: #374151; }
+.mp-paused-day  { font-size: 0.72rem; color: #6B7280; }
+.mp-paused-date { font-size: 0.68rem; color: #9CA3AF; }
+.mp-resume-btn { padding: 0.5rem 1rem; background: #0F1117; color: white; border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 700; font-family: inherit; cursor: pointer; white-space: nowrap; transition: all 0.15s; }
+.mp-resume-btn:hover { background: #1F2937; transform: translateY(-1px); }
+
+/* ── ALL CONDITIONS ── */
+.mp-all-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem; }
+.mp-search { padding: 0.5rem 1rem; border: 1.5px solid #E5E7EB; border-radius: 10px; font-size: 0.82rem; font-family: inherit; outline: none; width: 220px; }
+.mp-search:focus { border-color: #16A34A; }
+.mp-all-sub { font-size: 0.82rem; color: #6B7280; margin-bottom: 1rem; }
+
+.mp-conditions-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.75rem; }
+.mp-condition-card { background: #ffffff; border: 1.5px solid #EAECF0; border-radius: 14px; padding: 1.1rem 1.25rem; display: flex; flex-direction: column; gap: 0.6rem; transition: all 0.15s; }
+.mp-condition-card:hover { border-color: #D1D5DB; transform: translateY(-1px); box-shadow: 0 3px 12px rgba(0,0,0,0.06); }
+.mp-condition-card--active { border-color: #16A34A; background: #F0FDF4; }
+.mp-condition-card--paused { border-color: #FDE68A; background: #FFFBEB; }
+
+.mp-cc-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 0.5rem; }
+.mp-cc-name { display: block; font-size: 0.9rem; font-weight: 700; color: #0F1117; }
+.mp-cc-status { display: block; font-size: 0.65rem; font-weight: 600; margin-top: 0.2rem; }
+.mp-cc-status--active { color: #16A34A; }
+.mp-cc-status--paused { color: #D97706; }
+.mp-cc-view { background: none; border: 1px solid #E5E7EB; border-radius: 6px; padding: 0.25rem 0.6rem; font-size: 0.7rem; color: #6B7280; font-family: inherit; cursor: pointer; white-space: nowrap; flex-shrink: 0; transition: all 0.15s; }
+.mp-cc-view:hover { border-color: #16A34A; color: #16A34A; }
+.mp-cc-tagline { font-size: 0.75rem; color: #6B7280; line-height: 1.4; }
+
+.mp-cc-start  { width: 100%; padding: 0.5rem; background: #0F1117; color: white; border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 700; font-family: inherit; cursor: pointer; transition: all 0.15s; }
+.mp-cc-start:hover { background: #1F2937; }
+.mp-cc-stop   { width: 100%; padding: 0.5rem; background: none; color: #EF4444; border: 1px solid #EF4444; border-radius: 8px; font-size: 0.78rem; font-weight: 600; font-family: inherit; cursor: pointer; transition: all 0.15s; }
+.mp-cc-stop:hover { background: #FEF2F2; }
+.mp-cc-resume { width: 100%; padding: 0.5rem; background: #16A34A; color: white; border: none; border-radius: 8px; font-size: 0.78rem; font-weight: 700; font-family: inherit; cursor: pointer; transition: all 0.15s; }
+.mp-cc-resume:hover { background: #15803D; }
+
+@media (max-width: 640px) { .my-plans-page { padding: 1rem 1rem 3rem; } .mp-conditions-grid { grid-template-columns: 1fr; } }
