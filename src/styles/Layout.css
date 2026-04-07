@@ -1,17 +1,4 @@
-/* ============================================================
-   FILE: src/styles/Layout.css
-   PURPOSE: Sidebar layout, topbar, and responsive behaviour.
-
-   DESIGN SYSTEM — CSS VARIABLES:
-   All colors, spacing, and typography are defined here as
-   CSS custom properties (variables). Every other CSS file
-   can use these via var(--variable-name).
-   Changing a variable here updates the entire app.
-   ============================================================ */
-
-/* ── DESIGN TOKENS ─────────────────────────────────────────
-   These are the single source of truth for the visual system.
-*/
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap');
 :root {
   /* Colors */
   --color-bg:          #F7F8FA;
@@ -56,9 +43,6 @@
   /* Transitions */
   --transition: 0.18s ease;
 }
-
-/* ── GOOGLE FONT IMPORT ── */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700;800&display=swap');
 
 /* ── BASE RESET ── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }

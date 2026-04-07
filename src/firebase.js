@@ -3,13 +3,13 @@ import { getAuth, GoogleAuthProvider, browserLocalPersistence, setPersistence } 
 import { getFirestore } from 'firebase/firestore'
 
 const firebaseConfig = {
-  apiKey:            "AIzaSyDkfVBctDwjMJ7km7u2rnQ9ASRXvsEHnyQ",
-  authDomain:        "wellnest-b5658.firebaseapp.com",
-  projectId:         "wellnest-b5658",
-  storageBucket:     "wellnest-b5658.firebasestorage.app",
-  messagingSenderId: "540606719970",
-  appId:             "1:540606719970:web:609023f2856eac70c13bbb"
-}
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+};
 
 const app      = initializeApp(firebaseConfig)
 export const auth     = getAuth(app)

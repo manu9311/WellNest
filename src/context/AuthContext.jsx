@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from 'react'
-import { onAuthStateChanged, signInWithRedirect, getRedirectResult, signOut } from 'firebase/auth'
+import { onAuthStateChanged, signInWithPopup, signOut } from 'firebase/auth'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { auth, db, provider } from '../firebase'
 
@@ -10,18 +10,7 @@ export function AuthProvider({ children }) {
   const [profile, setProfile] = useState(null)
 
   useEffect(() => {
-    // Handle redirect result when user returns from Google
-    getRedirectResult(auth)
-      .then(async (result) => {
-        if (result?.user) {
-          setUser(result.user)
-          const ref  = doc(db, 'users', result.user.uid)
-          const snap = await getDoc(ref)
-          setProfile(snap.exists() ? snap.data() : null)
-        }
-      })
-      .catch(console.error)
-
+    
     // Listen for auth state
     const unsub = onAuthStateChanged(auth, async (firebaseUser) => {
       if (firebaseUser) {
@@ -39,7 +28,10 @@ export function AuthProvider({ children }) {
 
   const loading = user === undefined
 
-  const loginWithGoogle = () => signInWithRedirect(auth, provider)
+ const loginWithGoogle = async () => {
+  const result = await signInWithPopup(auth, provider)
+  setUser(result.user)
+}
 
   const logout = () => {
     signOut(auth)
